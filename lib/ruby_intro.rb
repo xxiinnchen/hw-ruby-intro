@@ -51,7 +51,7 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  if s.match(/^[0-9]+$/)== nil
+  if s.match(/^[0-9]+$/) == nil
     return false
   end
   decimal = s.to_i(base=2)
@@ -65,5 +65,21 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price
+
+  def initialize(isbn, price)
+    if isbn == ''
+      raise ArgumentError.new('ISBN is empty!')
+    elsif price <= 0
+      raise ArgumentError.new('Price is less or equal to 0')
+    else
+      @isbn = isbn
+      @price = price
+  	end
+  end
+
+  def price_as_string
+  	return "$#{'%.2f' % @price}"
+  end
+
 end
